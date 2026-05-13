@@ -28,7 +28,7 @@ export function Footer() {
 
                 <div className={styles.col}>
                     <p className={styles.colTitle}>Faculty</p>
-                    <a href="https://fit.mmu.edu.my" target="_blank" rel="noopener noreferrer">
+                    <a href="https://fist.mmu.edu.my" target="_blank" rel="noopener noreferrer">
                         FIST Website
                     </a>
                     <a href="https://mmls.mmu.edu.my" target="_blank" rel="noopener noreferrer">
@@ -51,7 +51,7 @@ export function Footer() {
             <div className={styles.bottom}>
                 <p>© {new Date().getFullYear()} junn.codes · Built by students, for students.</p>
                 <a
-                    href="https://github.com/junn-codes/mmu-junn/blob/main/CONTRIBUTING.md"
+                    href="https://github.com/junn-my/junn-codes-fist/blob/main/CONTRIBUTING.md"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

@@ -131,7 +131,7 @@ export default function HomePage() {
                         </p>
                         <div className={styles.ctaButtons}>
                             <a
-                                href="https://github.com/junn-codes/mmu-junn"
+                                href="https://github.com/junn-my/junn-codes-fist"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={styles.btnCtaPrimary}
