@@ -21,7 +21,7 @@ function prompt(question) {
 }
 
 console.log("\n🎓 New FYP Page Generator — mmu.junn.codes\n");
-console.log("This creates a new FYP showcase page under app/fyp/[slug]/page.tsx\n");
+console.log("This creates a new FYP showcase page under app/fyp/[slug]/\n");
 
 const title = await prompt("Project title: ");
 const tagline = await prompt("One-line description (shown on FYP index card): ");
@@ -29,7 +29,7 @@ const studentName = await prompt("Your full name: ");
 const studentGithub = await prompt("Your GitHub username: ");
 const academicYear = await prompt("Academic year (e.g. 2023/2024): ");
 const stackInput = await prompt("Tech stack (comma-separated, e.g. React,Node.js,PostgreSQL): ");
-const github = await prompt("GitHub repo URL: ");
+const github = await prompt("GitHub repo URL (leave blank if none): ");
 const demo = await prompt("Live demo URL (leave blank if none): ");
 
 const slug = title
@@ -42,26 +42,44 @@ const stack = stackInput
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean);
-const fullSlug = slug;
 
-const dir = path.join(ROOT, "app", "fyp", fullSlug);
-const file = path.join(dir, "page.tsx");
+const dir = path.join(ROOT, "app", "fyp", slug);
+const metaFile = path.join(dir, "meta.json");
+const pageFile = path.join(dir, "page.tsx");
 
-if (fs.existsSync(file)) {
-    console.error(`\n❌ FYP page already exists: ${file}`);
+if (fs.existsSync(pageFile)) {
+    console.error(`\n❌ FYP page already exists: ${pageFile}`);
     process.exit(1);
 }
 
 fs.mkdirSync(dir, { recursive: true });
 
+// ── Create meta.json ────────────────────────────────────────────────────────
+const meta = {
+    slug,
+    title,
+    tagline,
+    studentName,
+    studentGithub,
+    academicYear,
+    stack,
+    ...(github ? { github } : {}),
+    ...(demo ? { demo } : {}),
+    tags: [],
+};
+
+fs.writeFileSync(metaFile, JSON.stringify(meta, null, 4) + "\n", "utf-8");
+
+// ── Create page.tsx ─────────────────────────────────────────────────────────
 const fnName = slug
     .split("-")
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join("")
     .replace(/[^a-zA-Z0-9]/g, "");
 
-const template = `import type { Metadata } from "next";
+const pageTemplate = `import type { Metadata } from "next";
 import type { FypMeta } from "@/lib/types";
+import metaJson from "./meta.json";
 import {
   FypLayout,
   OverviewSection,
@@ -69,22 +87,7 @@ import {
   ReflectionSection,
 } from "@/components/fyp/FypLayout";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ✏️  EDIT THIS — project information
-// ─────────────────────────────────────────────────────────────────────────────
-const meta: FypMeta = {
-  slug: "${fullSlug}",
-  title: "${title}",
-  tagline: "${tagline}",
-  studentName: "${studentName}",
-  studentGithub: "${studentGithub}",
-  academicYear: "${academicYear}",
-  stack: ${JSON.stringify(stack)},
-  ${github ? `github: "${github}",` : '// github: "",'}
-  ${demo ? `demo: "${demo}",` : '// demo: "",'}
-  // coverImage: "https://r2.junn.codes/mmu/fyp/${fullSlug}/cover.png",
-  tags: [],
-};
+const meta = metaJson as FypMeta;
 
 export const metadata: Metadata = {
   title: meta.title,
@@ -99,7 +102,7 @@ export const metadata: Metadata = {
 //       <TechSection>       — architecture, technical decisions
 //       <ReflectionSection> — what you learned, challenges, what you'd do differently
 //
-//     You can also upload a cover image to R2 and add it to meta.coverImage.
+//     To update project info (title, stack, etc.) edit meta.json in this folder.
 // ─────────────────────────────────────────────────────────────────────────────
 export default function ${fnName}FYP() {
   return (
@@ -132,38 +135,12 @@ export default function ${fnName}FYP() {
 }
 `;
 
-fs.writeFileSync(file, template, "utf-8");
+fs.writeFileSync(pageFile, pageTemplate, "utf-8");
 
-// ── Inject into lib/data.ts ──────────────────────────────────────────────────
-const dataPath = path.join(ROOT, "lib", "data.ts");
-const dataSource = fs.readFileSync(dataPath, "utf-8");
-
-const newEntry = `  {
-    slug: "${fullSlug}",
-    title: "${title}",
-    tagline: "${tagline}",
-    studentName: "${studentName}",
-    studentGithub: "${studentGithub}",
-    academicYear: "${academicYear}",
-    stack: ${JSON.stringify(stack)},
-    tags: [],${github ? `\n    github: "${github}",` : ""}${demo ? `\n    demo: "${demo}",` : ""}
-  },`;
-
-// Insert before the closing ]; of fypProjects
-const updatedData = dataSource.replace(
-    /^(export const fypProjects[\s\S]*?)(];)/m,
-    (_, arr, closing) => `${arr}${newEntry}\n${closing}`
-);
-
-if (updatedData === dataSource) {
-    console.warn("\n⚠️  Could not auto-update lib/data.ts — add the entry manually.");
-} else {
-    fs.writeFileSync(dataPath, updatedData, "utf-8");
-    console.log("   Updated: lib/data.ts (entry added to fypProjects)");
-}
-
-console.log(`\n✅ Created: app/fyp/${fullSlug}/page.tsx`);
+console.log(`\n✅ Created: app/fyp/${slug}/meta.json`);
+console.log(`✅ Created: app/fyp/${slug}/page.tsx`);
 console.log("\nNext steps:");
-console.log("  1. Open the file and fill in your project content");
-console.log("  2. Optionally upload a cover image via the R2 upload tool");
-console.log("  3. Open a PR — see CONTRIBUTING.md for guidelines\n");
+console.log("  1. Open page.tsx and fill in your project content");
+console.log("  2. Edit meta.json to update project details at any time");
+console.log("  3. Optionally add a cover image URL to meta.json as \"coverImage\"");
+console.log("  4. Open a PR — see CONTRIBUTING.md for guidelines\n");

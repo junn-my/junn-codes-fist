@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { subjects } from "@/lib/data";
-import { newsItems } from "@/lib/data";
+import { getAllNews } from "@/lib/news";
 import { NewsCard } from "@/components/ui/NewsCard";
 import styles from "@/styles/pages/home.module.css";
 
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-    const latestNews = newsItems.slice(0, 3);
+    const latestNews = getAllNews().slice(0, 3);
 
     return (
         <main>

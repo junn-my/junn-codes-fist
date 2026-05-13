@@ -1,0 +1,31 @@
+{
+    "code": "TIT2201",
+    "title": "Data Structures and Algorithms",
+    "credits": 3,
+    "type": "major",
+    "semester": "Year 2 Sem 1",
+    "description": "Covers fundamental data structures (arrays, linked lists, trees, graphs, hash tables) and core algorithms including sorting, searching, and graph traversal.",
+    "downloads": [
+        {
+            "label": "Week 1 — Introduction to DSA",
+            "url": "https://r2.junn.codes/mmu/TIT2201/week1-slides.pdf",
+            "size": "2.1 MB",
+            "type": "slides"
+        },
+        {
+            "label": "Tutorial 1 — Arrays & Linked Lists",
+            "url": "https://r2.junn.codes/mmu/TIT2201/tutorial-1.pdf",
+            "size": "0.9 MB",
+            "type": "tutorial"
+        },
+        {
+            "label": "Tutorial 1 — Answer Scheme",
+            "url": "https://r2.junn.codes/mmu/TIT2201/tutorial-1-ans.pdf",
+            "size": "0.7 MB",
+            "type": "answer"
+        }
+    ],
+    "tags": ["algorithms", "data-structures", "java", "complexity"],
+    "updatedAt": "2026-05-13",
+    "contributor": "sufikai"
+}

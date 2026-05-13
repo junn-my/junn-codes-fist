@@ -1,0 +1,10 @@
+{
+    "slug": "healthsync-vr",
+    "title": "HealthSync VR",
+    "tagline": "VR-based physical rehabilitation platform with biometric feedback.",
+    "studentName": "Jason Lim",
+    "studentGithub": "jasonlim",
+    "academicYear": "2022/2023",
+    "stack": ["Unity", "C#", "Oculus SDK", "Firebase"],
+    "tags": ["vr", "health", "unity"]
+}

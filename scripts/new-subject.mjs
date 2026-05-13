@@ -28,7 +28,7 @@ async function select(question, options) {
 }
 
 console.log("\n🎓 New Subject Page Generator — mmu.junn.codes\n");
-console.log("This creates a new subject page under app/subjects/[CODE]/page.tsx\n");
+console.log("This creates a new subject page under app/subjects/[CODE]/\n");
 
 const code = await prompt("Subject code (e.g. TIT3151): ");
 const title = await prompt("Subject title (e.g. Web Programming): ");
@@ -40,17 +40,37 @@ const github = await prompt("GitHub repo URL (leave blank if none): ");
 const contributor = await prompt("Your GitHub username: ");
 
 const dir = path.join(ROOT, "app", "subjects", code);
-const file = path.join(dir, "page.tsx");
+const metaFile = path.join(dir, "meta.json");
+const pageFile = path.join(dir, "page.tsx");
 
-if (fs.existsSync(file)) {
-    console.error(`\n❌ Subject page already exists: ${file}`);
+if (fs.existsSync(pageFile)) {
+    console.error(`\n❌ Subject page already exists: ${pageFile}`);
     process.exit(1);
 }
 
 fs.mkdirSync(dir, { recursive: true });
 
-const template = `import type { Metadata } from "next";
+// ── Create meta.json ────────────────────────────────────────────────────────
+const meta = {
+    code,
+    title,
+    credits: parseInt(credits, 10) || 3,
+    type,
+    semester,
+    description,
+    ...(github ? { github } : {}),
+    downloads: [],
+    tags: [],
+    updatedAt: new Date().toISOString().split("T")[0],
+    contributor,
+};
+
+fs.writeFileSync(metaFile, JSON.stringify(meta, null, 4) + "\n", "utf-8");
+
+// ── Create page.tsx ─────────────────────────────────────────────────────────
+const pageTemplate = `import type { Metadata } from "next";
 import type { SubjectMeta } from "@/lib/types";
+import metaJson from "./meta.json";
 import {
   SubjectLayout,
   GuideSection,
@@ -59,30 +79,7 @@ import {
   ResourcesSection,
 } from "@/components/subject/SubjectLayout";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ✏️  EDIT THIS — subject information
-// ─────────────────────────────────────────────────────────────────────────────
-const meta: SubjectMeta = {
-  code: "${code}",
-  title: "${title}",
-  credits: ${parseInt(credits, 10) || 3},
-  type: "${type}",
-  semester: "${semester}",
-  description: "${description}",
-  ${github ? `github: "${github}",` : '// github: "",'}
-  downloads: [
-    // Add download items here. Upload files to R2 first via the upload tool.
-    // {
-    //   label: "Week 1 Slides",
-    //   url: "https://r2.junn.codes/mmu/${code}/week1-slides.pdf",
-    //   size: "2.4 MB",
-    //   type: "slides",
-    // },
-  ],
-  tags: [],
-  updatedAt: "${new Date().toISOString().split("T")[0]}",
-  contributor: "${contributor}",
-};
+const meta = metaJson as SubjectMeta;
 
 export const metadata: Metadata = {
   title: \`\${meta.code} \${meta.title}\`,
@@ -93,13 +90,13 @@ export const metadata: Metadata = {
 // ✏️  EDIT BELOW — write your content
 //
 //     Available section components:
-//       <TopicsSection>  — list of topics covered in the subject
-//       <GuideSection>   — study guide, notes, explanations
-//       <TipsSection>    — exam tips, common mistakes
+//       <TopicsSection>    — list of topics covered in the subject
+//       <GuideSection>     — study guide, notes, explanations
+//       <TipsSection>      — exam tips, common mistakes
 //       <ResourcesSection> — useful external links
 //
-//     Inside each section you can use any valid JSX/HTML.
-//     See TIT3151/page.tsx for a full example.
+//     To update subject info (title, downloads, etc.) edit meta.json.
+//     See TIT2201/page.tsx for a full example.
 // ─────────────────────────────────────────────────────────────────────────────
 export default function ${code.replace(/[^a-zA-Z0-9]/g, "")}() {
   return (
@@ -135,11 +132,11 @@ export default function ${code.replace(/[^a-zA-Z0-9]/g, "")}() {
 }
 `;
 
-fs.writeFileSync(file, template, "utf-8");
+fs.writeFileSync(pageFile, pageTemplate, "utf-8");
 
-console.log(`\n✅ Created: app/subjects/${code}/page.tsx`);
+console.log(`\n✅ Created: app/subjects/${code}/meta.json`);
+console.log(`✅ Created: app/subjects/${code}/page.tsx`);
 console.log("\nNext steps:");
-console.log("  1. Open the file and fill in the content sections");
-console.log("  2. Upload any downloadable files via the R2 upload tool");
-console.log("  3. Add download URLs to the meta.downloads array");
-console.log("  4. Open a PR — see CONTRIBUTING.md for guidelines\n");
+console.log("  1. Open page.tsx and fill in the content sections");
+console.log("  2. Upload downloadable files to R2, then add them to meta.json downloads[]");
+console.log("  3. Open a PR — see CONTRIBUTING.md for guidelines\n");

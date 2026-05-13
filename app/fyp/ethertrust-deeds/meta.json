@@ -1,0 +1,10 @@
+{
+    "slug": "ethertrust-deeds",
+    "title": "EtherTrust Deeds",
+    "tagline": "Blockchain-secured property title management on Ethereum.",
+    "studentName": "Nurul Syuhada",
+    "studentGithub": "nurulsyuhada",
+    "academicYear": "2022/2023",
+    "stack": ["Solidity", "Web3.js", "Next.js", "IPFS"],
+    "tags": ["blockchain", "web3", "fintech"]
+}

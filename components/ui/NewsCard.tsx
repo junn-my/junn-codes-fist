@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { NewsItem } from "@/lib/data";
+import type { NewsItem } from "@/lib/news";
 import styles from "@/styles/components/NewsCard.module.css";
 
 interface NewsCardProps {

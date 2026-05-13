@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { SubjectMeta } from "@/lib/types";
+import metaJson from "./meta.json";
 import {
     SubjectLayout,
     GuideSection,
@@ -8,42 +9,7 @@ import {
     ResourcesSection,
 } from "@/components/subject/SubjectLayout";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ✏️  EDIT THIS — subject information
-// ─────────────────────────────────────────────────────────────────────────────
-const meta: SubjectMeta = {
-    code: "TIT3151",
-    title: "Web Programming",
-    credits: 3,
-    type: "elective",
-    semester: "Year 2 Sem 1",
-    description:
-        "Covers client-side and server-side web development fundamentals including HTML, CSS, JavaScript, and PHP.",
-    github: "https://github.com/junn-codes/mmu-TIT3151",
-    downloads: [
-        {
-            label: "Week 1 — Introduction to Web",
-            url: "https://r2.junn.codes/mmu/TIT3151/week1-slides.pdf",
-            size: "3.2 MB",
-            type: "slides",
-        },
-        {
-            label: "Tutorial 1 — HTML Basics",
-            url: "https://r2.junn.codes/mmu/TIT3151/tutorial-1.pdf",
-            size: "1.1 MB",
-            type: "tutorial",
-        },
-        {
-            label: "Tutorial 1 — Answer Scheme",
-            url: "https://r2.junn.codes/mmu/TIT3151/tutorial-1-ans.pdf",
-            size: "0.8 MB",
-            type: "answer",
-        },
-    ],
-    tags: ["html", "css", "javascript", "php"],
-    updatedAt: "2024-11-15",
-    contributor: "your-github-username",
-};
+const meta = metaJson as SubjectMeta;
 
 export const metadata: Metadata = {
     title: `${meta.code} ${meta.title}`,

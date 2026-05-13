@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { fypProjects, getFypBySlug } from "@/lib/data";
+import { getAllFyp, getFypBySlug } from "@/lib/fyp";
 import {
     FypLayout,
     OverviewSection,
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-    return fypProjects.map((p) => ({ slug: p.slug }));
+    return getAllFyp().map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

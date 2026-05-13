@@ -1,0 +1,10 @@
+{
+    "slug": "agrobot-sentry",
+    "title": "AgroBot Sentry",
+    "tagline": "Autonomous pest detection drone with edge AI vision processing.",
+    "studentName": "William Chen",
+    "studentGithub": "williamchen",
+    "academicYear": "2021/2022",
+    "stack": ["PyTorch", "ROS", "Edge AI", "OpenCV"],
+    "tags": ["robotics", "ai", "drone"]
+}

@@ -1,19 +1,9 @@
-"use client";
-import { useState, useMemo } from "react";
-import { newsItems } from "@/lib/data";
-import { NewsCard } from "@/components/ui/NewsCard";
+import { getAllNews } from "@/lib/news";
+import { NewsFilterClient } from "@/components/news/NewsFilterClient";
 import styles from "@/styles/pages/news.module.css";
 
-const CATEGORIES = ["All", "Faculty Notice", "Academics", "Events", "Announcement"] as const;
-type Category = (typeof CATEGORIES)[number];
-
 export default function NewsPage() {
-    const [active, setActive] = useState<Category>("All");
-
-    const filtered = useMemo(
-        () => (active === "All" ? newsItems : newsItems.filter((n) => n.category === active)),
-        [active]
-    );
+    const items = getAllNews();
 
     return (
         <div className={styles.page}>
@@ -25,28 +15,7 @@ export default function NewsPage() {
                     community.
                 </p>
             </header>
-
-            <div className={styles.filters}>
-                {CATEGORIES.map((cat) => (
-                    <button
-                        key={cat}
-                        onClick={() => setActive(cat)}
-                        className={`${styles.filterBtn} ${active === cat ? styles.filterBtnActive : ""}`}
-                    >
-                        {cat}
-                    </button>
-                ))}
-            </div>
-
-            <div className={styles.grid}>
-                {filtered.map((post, i) => (
-                    <NewsCard
-                        key={post.slug}
-                        post={post}
-                        accent={post.category === "Academics" ? "error" : "primary"}
-                    />
-                ))}
-            </div>
+            <NewsFilterClient items={items} />
         </div>
     );
 }
