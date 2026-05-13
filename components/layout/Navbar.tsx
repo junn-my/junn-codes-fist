@@ -18,7 +18,7 @@ export function Navbar() {
         <nav className={styles.nav}>
             <div className={styles.inner}>
                 <Link href="/" className={styles.brand}>
-                    mmu<span className={styles.brandSuffix}>.junn.codes</span>
+                    fist<span className={styles.brandSuffix}>.junn.codes</span>
                 </Link>
 
                 <div className={styles.links}>
