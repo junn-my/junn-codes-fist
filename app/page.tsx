@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getAllNews } from "@/lib/news";
 import { NewsCard } from "@/components/ui/NewsCard";
 import styles from "@/styles/pages/home.module.css";
+import { APP_VERSION, ANNOUNCEMENT_TEXT } from "@/appversion";
 
 export const metadata: Metadata = {
     title: "FIST Resource — MMU Faculty of Information Science & Technology",
@@ -18,8 +19,8 @@ export default function HomePage() {
             {/* ── Hero ── */}
             <section className={styles.hero}>
                 <div className={styles.announcement}>
-                    <span className={styles.announcementBadge}>NEW</span>
-                    <span className={styles.announcementText}>Academic Year 2025 Portal Live</span>
+                    <span className={styles.announcementBadge}>v{APP_VERSION}</span>
+                    <span className={styles.announcementText}>{ANNOUNCEMENT_TEXT}</span>
                 </div>
 
                 <h1 className={styles.heroTitle}>
