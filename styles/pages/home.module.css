@@ -1,9 +1,29 @@
 /* ── Hero ──────────────────────────────────────────────────────────────── */
 .hero {
+    position: relative;
     max-width: var(--container-max);
     margin: 0 auto;
     padding: var(--space-16) var(--gutter) var(--space-12);
     text-align: center;
+    overflow: hidden;
+}
+
+/* ── Comment out the block below to disable the dot grid background ── */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
 }
 
 .announcement {
