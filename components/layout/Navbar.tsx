@@ -38,7 +38,7 @@ export function Navbar() {
 
                 <div className={styles.actions}>
                     <a
-                        href="https://github.com/junn-codes/mmu-junn"
+                        href="https://github.com/junn-my/junn-codes-fist"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.github}

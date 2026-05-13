@@ -2,7 +2,7 @@
 
 > A community-built resource hub for MMU FIST students — by [junn.codes](https://junn.codes)
 
-Subject guides, downloadable materials, and FYP showcases for the Faculty of Information Science and Technology at Multimedia University.
+Subject guides, downloadable materials, FYP showcases, and faculty news for the Faculty of Information Science and Technology at Multimedia University.
 
 **Not affiliated with Multimedia University.**
 
@@ -18,27 +18,40 @@ Subject guides, downloadable materials, and FYP showcases for the Faculty of Inf
 | Hosting      | Cloudflare Pages                        |
 | File storage | Cloudflare R2                           |
 | Search       | Pagefind (static, built at deploy time) |
+| Formatting   | Prettier + prettier-plugin-tailwindcss  |
 
 ## Project structure
 
 ```
 app/
   subjects/
-    TIT3151/page.tsx   ← each subject is its own page
+    TIT3151/
+      meta.json          ← subject metadata + download links
+      page.tsx
   fyp/
-    2024-project/page.tsx
-  news/
-  contact/
+    healthsync-vr/
+      meta.json          ← FYP metadata
+    [slug]/page.tsx      ← dynamic FYP detail pages
+  news/page.tsx
+  contact/page.tsx
 components/
-  layout/              ← Navbar, Footer
-  subject/             ← SubjectLayout + section components
-  fyp/                 ← FypLayout + section components
-  ui/                  ← Badge, DownloadButton, etc.
+  layout/                ← Navbar, Footer
+  subject/               ← SubjectLayout, SubjectsFilterClient
+  fyp/                   ← FypLayout, FypFilterClient
+  news/                  ← NewsFilterClient
+  ui/                    ← Badge, DownloadButton, SubjectCard, FypCard, NewsCard
+content/
+  news/                  ← news posts as JSON files
+  subjects/README.md     ← contributing guide for subject content
+  fyp/README.md          ← contributing guide for FYP content
 lib/
-  types.ts             ← TypeScript types for SubjectMeta, FypMeta, etc.
+  types.ts               ← TypeScript types: SubjectMeta, FypMeta, NewsItem, etc.
+  subjects.ts            ← data helpers for subjects
+  fyp.ts                 ← data helpers for FYP entries
+  news.ts                ← data helpers for news posts
 scripts/
-  new-subject.mjs      ← npm run new:subject
-  new-fyp.mjs          ← npm run new:fyp
+  new-subject.mjs        ← npm run new:subject
+  new-fyp.mjs            ← npm run new:fyp
 ```
 
 ## Contributing
@@ -54,12 +67,15 @@ npm run new:subject
 
 # scaffold a new FYP page
 npm run new:fyp
+
+# format code
+npm run format
 ```
 
 ## Deployment
 
 Pushes to `main` auto-deploy to Cloudflare Pages.
-The build runs `next build && pagefind --site out` to generate the static search index.
+The build runs `next build && npx pagefind --site out` to generate the static search index.
 
 ## License
 
