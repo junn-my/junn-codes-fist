@@ -1,0 +1,96 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6);
+    background: var(--color-surface-container-lowest);
+    border: 1px solid var(--color-outline-variant);
+    border-left-width: 4px;
+    text-decoration: none;
+    color: var(--color-on-surface);
+    transition: box-shadow var(--transition);
+    overflow: hidden;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.accentPrimary {
+    border-left-color: var(--color-primary);
+}
+.accentError {
+    border-left-color: var(--color-error);
+}
+
+/* ── Top ───────────────────────────────────────────────────────────────── */
+.top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.tag {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: var(--radius-xs);
+}
+
+.tagPrimary {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-primary);
+}
+
+.tagError {
+    background: var(--color-error-container);
+    color: var(--color-on-error-container);
+}
+
+.date {
+    font-size: 12px;
+    color: var(--color-on-surface-muted);
+}
+
+/* ── Content ───────────────────────────────────────────────────────────── */
+.title {
+    font-family: var(--font-body);
+    font-size: var(--text-headline-sm);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-on-surface);
+    line-height: 1.35;
+    margin-bottom: var(--space-3);
+    transition: color var(--transition);
+}
+
+.card:hover .title {
+    color: var(--color-error);
+}
+
+.excerpt {
+    font-size: var(--text-body);
+    color: var(--color-on-surface-variant);
+    line-height: var(--lh-prose);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: var(--space-6);
+    flex: 1;
+}
+
+/* ── CTA ───────────────────────────────────────────────────────────────── */
+.readMore {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: auto;
+}

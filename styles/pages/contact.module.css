@@ -1,0 +1,193 @@
+.page {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--gutter) var(--space-24);
+}
+
+.hero {
+    padding: var(--space-12) 0 var(--space-10);
+    border-bottom: 1px solid var(--color-outline-variant);
+    margin-bottom: var(--space-12);
+    max-width: 640px;
+}
+
+.eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-error);
+    margin-bottom: var(--space-3);
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.5vw, 48px);
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: var(--space-5);
+}
+
+.subtitle {
+    font-size: var(--text-body-lg);
+    color: var(--color-on-surface-variant);
+    line-height: 1.65;
+}
+
+/* ── Two-column layout ─────────────────────────────────────────────────── */
+.body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .body {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Contact info cards ────────────────────────────────────────────────── */
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.card {
+    display: flex;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-container-lowest);
+    text-decoration: none;
+    color: var(--color-on-surface);
+    transition:
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-outline);
+}
+
+.cardIcon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-container-high);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-on-surface-variant);
+}
+
+.cardLabel {
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-on-surface-muted);
+    margin-bottom: var(--space-1);
+}
+
+.cardValue {
+    font-size: var(--text-body);
+    font-weight: 500;
+    color: var(--color-on-surface);
+    margin-bottom: var(--space-1);
+}
+
+.cardMeta {
+    font-size: var(--text-body-sm);
+    color: var(--color-on-surface-muted);
+    line-height: 1.5;
+}
+
+/* ── Contribute panel ──────────────────────────────────────────────────── */
+.contribute {
+    position: sticky;
+    top: calc(var(--nav-height) + var(--space-6));
+    background: var(--color-primary-container);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10);
+    color: var(--color-primary-container-text);
+}
+
+.contributeTitle {
+    font-family: var(--font-display);
+    font-size: var(--text-headline-lg);
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: var(--space-4);
+    line-height: var(--lh-headline);
+}
+
+.contributeDesc {
+    font-size: var(--text-body);
+    color: var(--color-on-primary-container);
+    line-height: 1.7;
+    margin-bottom: var(--space-8);
+}
+
+.contributeSteps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+}
+
+.step {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+}
+
+.stepNum {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stepText {
+    font-size: var(--text-body-sm);
+    color: var(--color-secondary-dim);
+    line-height: 1.55;
+    padding-top: 4px;
+}
+
+.contributeBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 12px 22px;
+    border-radius: var(--radius-sm);
+    background: #ffffff;
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity var(--transition);
+    width: 100%;
+    justify-content: center;
+}
+
+.contributeBtn:hover {
+    opacity: 0.88;
+}

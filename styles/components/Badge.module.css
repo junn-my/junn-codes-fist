@@ -1,0 +1,27 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.general {
+    background: var(--color-general-bg);
+    color: var(--color-general);
+}
+
+.elective {
+    background: var(--color-elective-bg);
+    color: var(--color-elective);
+}
+
+.major {
+    background: var(--color-major-bg);
+    color: var(--color-major);
+}

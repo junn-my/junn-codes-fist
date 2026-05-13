@@ -1,0 +1,150 @@
+.footer {
+    background: var(--color-primary-container);
+    color: var(--color-primary-container-text);
+    margin-top: var(--space-24);
+}
+
+/* ── Main grid ─────────────────────────────────────────────────────────── */
+.grid {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-24) var(--gutter) var(--space-16);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-8);
+}
+
+@media (max-width: 960px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        padding-top: var(--space-16);
+    }
+    .brandCol {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 560px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Brand column ──────────────────────────────────────────────────────── */
+.brandName {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: var(--text-headline-lg);
+    font-weight: 400;
+    color: #ffffff;
+    line-height: var(--lh-headline);
+    margin-bottom: var(--space-5);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+.brandDesc {
+    font-size: var(--text-body-sm);
+    color: var(--color-secondary-dim);
+    line-height: 1.65;
+    max-width: 320px;
+    margin-bottom: var(--space-4);
+}
+
+.disclaimer {
+    font-size: 11px;
+    color: var(--color-on-primary-container);
+    opacity: 0.45;
+}
+
+/* ── Link columns ──────────────────────────────────────────────────────── */
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-2);
+}
+
+.colTitle {
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-on-primary-container);
+    opacity: 0.6;
+    margin-bottom: var(--space-2);
+}
+
+.col a {
+    font-size: var(--text-body-sm);
+    color: var(--color-secondary-dim);
+    text-decoration: none;
+    transition: color var(--transition);
+    width: fit-content;
+}
+
+.col a:hover {
+    color: #ffffff;
+}
+
+/* ── Status indicator ──────────────────────────────────────────────────── */
+.status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+    font-size: 11px;
+    color: var(--color-on-primary-container);
+    opacity: 0.55;
+}
+
+.statusDot {
+    width: 7px;
+    height: 7px;
+    border-radius: var(--radius-full);
+    background: #4ade80;
+    flex-shrink: 0;
+    animation: statusPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* ── Bottom bar ────────────────────────────────────────────────────────── */
+.bottom {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-6) var(--gutter);
+    border-top: 1px solid rgba(124, 131, 155, 0.18);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+}
+
+.bottom p {
+    font-size: 12px;
+    color: var(--color-on-primary-container);
+    opacity: 0.45;
+}
+
+.bottom a {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-error);
+    text-decoration: none;
+    transition: opacity var(--transition);
+}
+
+.bottom a:hover {
+    opacity: 0.75;
+}

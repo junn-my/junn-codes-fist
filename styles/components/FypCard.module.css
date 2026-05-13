@@ -1,0 +1,175 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-outline-variant);
+    border-left-width: 6px;
+    border-left-color: var(--color-primary);
+    background: var(--color-surface-container-lowest);
+    text-decoration: none;
+    color: var(--color-on-surface);
+    overflow: hidden;
+    transition:
+        box-shadow var(--duration-slow) var(--ease),
+        transform var(--duration-slow) var(--ease);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-float);
+    transform: translateY(-2px);
+}
+
+/* ── Image ─────────────────────────────────────────────────────────────── */
+.imageWrap {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--color-surface-container-high);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--ease);
+}
+
+.card:hover .image {
+    transform: scale(1.04);
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        135deg,
+        var(--color-surface-container-high),
+        var(--color-surface-dim)
+    );
+}
+
+.placeholderText {
+    font-family: var(--font-display);
+    font-size: 64px;
+    color: var(--color-outline-variant);
+    user-select: none;
+}
+
+.yearBadge {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    background: rgba(252, 248, 250, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-full);
+    padding: 3px 10px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 0.02em;
+}
+
+/* ── Body ──────────────────────────────────────────────────────────────── */
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    flex: 1;
+}
+
+.title {
+    font-family: var(--font-body);
+    font-size: var(--text-headline-sm);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-on-surface);
+    margin-bottom: var(--space-1);
+    line-height: 1.3;
+}
+
+.tagline {
+    font-size: var(--text-body-sm);
+    color: var(--color-on-surface-variant);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* ── Student ───────────────────────────────────────────────────────────── */
+.student {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.avatar {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-container-high);
+    color: var(--color-on-surface-variant);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-outline-variant);
+}
+
+.studentName {
+    font-size: var(--text-body);
+    font-weight: 500;
+    color: var(--color-on-surface);
+}
+
+/* ── Stack ─────────────────────────────────────────────────────────────── */
+.stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: auto;
+}
+
+.tech {
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.04);
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+}
+
+/* ── CTA ───────────────────────────────────────────────────────────────── */
+.cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) 0;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+.card:hover .cta {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+}
