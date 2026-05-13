@@ -25,7 +25,13 @@ export default function HomePage() {
                 <h1 className={styles.heroTitle}>
                     The Community Hub for
                     <br />
-                    MMU FIST Students.
+                    <a 
+                        href="https://www.mmu.edu.my/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className={styles.mmuLink}
+                    >
+                    <span className="mmublue">MM</span><span className="mmured">U</span></a> FIST Students.
                 </h1>
 
                 <p className={styles.heroSub}>

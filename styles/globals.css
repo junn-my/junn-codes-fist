@@ -202,3 +202,7 @@ video {
     max-width: 100%;
     display: block;
 }
+
+/* ── MMU Brand Colors ───────────────────────────────────────────────────── */
+.mmublue { color: #0050A2; }
+.mmured  { color: #EC1B2E; }
