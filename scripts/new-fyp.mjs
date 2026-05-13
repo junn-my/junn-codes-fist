@@ -72,7 +72,7 @@ import {
 // ─────────────────────────────────────────────────────────────────────────────
 // ✏️  EDIT THIS — project information
 // ─────────────────────────────────────────────────────────────────────────────
-export const meta: FypMeta = {
+const meta: FypMeta = {
   slug: "${fullSlug}",
   title: "${title}",
   tagline: "${tagline}",

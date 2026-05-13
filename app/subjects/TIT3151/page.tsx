@@ -11,7 +11,7 @@ import {
 // ─────────────────────────────────────────────────────────────────────────────
 // ✏️  EDIT THIS — subject information
 // ─────────────────────────────────────────────────────────────────────────────
-export const meta: SubjectMeta = {
+const meta: SubjectMeta = {
     code: "TIT3151",
     title: "Web Programming",
     credits: 3,

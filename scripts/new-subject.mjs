@@ -62,7 +62,7 @@ import {
 // ─────────────────────────────────────────────────────────────────────────────
 // ✏️  EDIT THIS — subject information
 // ─────────────────────────────────────────────────────────────────────────────
-export const meta: SubjectMeta = {
+const meta: SubjectMeta = {
   code: "${code}",
   title: "${title}",
   credits: ${parseInt(credits, 10) || 3},
