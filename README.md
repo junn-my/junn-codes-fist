@@ -1,6 +1,8 @@
-# mmu.junn.codes
+# fist.junn.codes
 
 > A community-built resource hub for MMU FIST students — by [junn.codes](https://junn.codes)
+
+**Live at [fist.junn.codes](https://fist.junn.codes/)**
 
 Subject guides, downloadable materials, FYP showcases, and faculty news for the Faculty of Information Science and Technology at Multimedia University.
 
@@ -23,35 +25,35 @@ Subject guides, downloadable materials, FYP showcases, and faculty news for the 
 ## Project structure
 
 ```
-app/
-  subjects/
-    TIT3151/
-      meta.json          ← subject metadata + download links
-      page.tsx
-  fyp/
-    healthsync-vr/
-      meta.json          ← FYP metadata
-    [slug]/page.tsx      ← dynamic FYP detail pages
-  news/page.tsx
-  contact/page.tsx
-components/
-  layout/                ← Navbar, Footer
-  subject/               ← SubjectLayout, SubjectsFilterClient
-  fyp/                   ← FypLayout, FypFilterClient
-  news/                  ← NewsFilterClient
-  ui/                    ← Badge, DownloadButton, SubjectCard, FypCard, NewsCard
-content/
-  news/                  ← news posts as JSON files
-  subjects/README.md     ← contributing guide for subject content
-  fyp/README.md          ← contributing guide for FYP content
-lib/
-  types.ts               ← TypeScript types: SubjectMeta, FypMeta, NewsItem, etc.
-  subjects.ts            ← data helpers for subjects
-  fyp.ts                 ← data helpers for FYP entries
-  news.ts                ← data helpers for news posts
-scripts/
-  new-subject.mjs        ← npm run new:subject
-  new-fyp.mjs            ← npm run new:fyp
+├── app/
+│   ├── subjects/
+│   │   └── TIT3151/
+│   │       ├── meta.json          ← subject metadata + download links
+│   │       └── page.tsx
+│   ├── fyp/
+│   │   ├── healthsync-vr/
+│   │   │   └── meta.json          ← FYP metadata
+│   │   └── [slug]/page.tsx        ← dynamic FYP detail pages
+│   ├── news/page.tsx
+│   └── contact/page.tsx
+├── components/
+│   ├── layout/                    ← Navbar, Footer
+│   ├── subject/                   ← SubjectLayout, SubjectsFilterClient
+│   ├── fyp/                       ← FypLayout, FypFilterClient
+│   ├── news/                      ← NewsFilterClient
+│   └── ui/                        ← Badge, DownloadButton, SubjectCard, FypCard, NewsCard
+├── content/
+│   ├── news/                      ← news posts as JSON files
+│   ├── subjects/README.md         ← contributing guide for subject content
+│   └── fyp/README.md              ← contributing guide for FYP content
+├── lib/
+│   ├── types.ts                   ← TypeScript types: SubjectMeta, FypMeta, NewsItem, etc.
+│   ├── subjects.ts                ← data helpers for subjects
+│   ├── fyp.ts                     ← data helpers for FYP entries
+│   └── news.ts                    ← data helpers for news posts
+└── scripts/
+    ├── new-subject.mjs            ← npm run new:subject
+    └── new-fyp.mjs                ← npm run new:fyp
 ```
 
 ## Contributing
